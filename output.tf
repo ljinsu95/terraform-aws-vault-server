@@ -1,3 +1,8 @@
 output "vault_public_ip" {
   value = aws_instance.vault_raft_amz2.*.public_ip
 }
+
+# https://developer.hashicorp.com/terraform/language/expressions/references#filesystem-and-workspace-info
+output "workspace" {
+  value = terraform.workspace
+}
