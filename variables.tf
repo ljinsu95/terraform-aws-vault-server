@@ -1,14 +1,5 @@
 #################################################
 # 필수 값
-variable "TFE_ORG_NAME" {
-  type        = string
-  description = "Terraform Organization Name"
-}
-variable "TFE_TOKEN" {
-  type        = string
-  description = "TFE Token"
-}
-
 variable "AWS_ACCESS_KEY_ID" {
   description = "AWS ACCESS KEY"
   sensitive   = true
@@ -81,3 +72,9 @@ variable "architecture" {
   description = "ec2에 사용되는 아키텍쳐 명 ( x86 or arm )"
 }
 
+variable "aws_subnets_ids" {
+  type        = list(string)
+  nullable    = true
+  description = "AWS Subnet ID List"
+  default     = null
+}

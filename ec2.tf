@@ -5,7 +5,8 @@ resource "aws_instance" "vault_raft_amz2" {
 
   ami                    = data.aws_ami.amazon_linux_2.id
   instance_type          = var.instance_type
-  subnet_id              = data.aws_subnets.main.ids[(tonumber(count.index) + 1) % length(data.aws_subnets.main.ids)]
+  subnet_id              = local.aws_subnets_ids[(tonumber(count.index) + 1) % length(local.aws_subnets_ids)]
+  # subnet_id              = data.aws_subnets.main.ids[(tonumber(count.index) + 1) % length(data.aws_subnets.main.ids)]
   vpc_security_group_ids = toset([aws_security_group.vault_server.id])
   key_name               = var.pem_key_name
   tags = {
