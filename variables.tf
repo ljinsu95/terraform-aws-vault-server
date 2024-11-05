@@ -28,7 +28,6 @@ variable "VAULT_LICENSE" {
 #################################################
 
 # 옵션 값
-
 variable "prefix" {
   default     = "terraform_jinsu"
   description = "prefix"

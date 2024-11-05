@@ -1,6 +1,6 @@
 provider "tfe" {
   hostname     = "jinsu.terraform.insideinfo-cloud.com"
-  # organization = var.TFE_ORG_NAME
+  organization = var.TFE_ORG_NAME
   token        = var.TFE_TOKEN
 }
 
