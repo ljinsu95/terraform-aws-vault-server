@@ -1,6 +1,12 @@
-variable "prefix" {
-  default     = "terraform_jinsu"
-  description = "prefix"
+#################################################
+# 필수 값
+variable "TFE_ORG_NAME" {
+  type        = string
+  description = "Terraform Organization Name"
+}
+variable "TFE_TOKEN" {
+  type        = string
+  description = "TFE Token"
 }
 
 variable "AWS_ACCESS_KEY_ID" {
@@ -11,6 +17,21 @@ variable "AWS_ACCESS_KEY_ID" {
 variable "AWS_SECRET_ACCESS_KEY" {
   description = "AWS SECRET ACCESS KEY"
   sensitive   = true
+}
+
+variable "VAULT_LICENSE" {
+  type        = string
+  sensitive   = true
+  description = "License for the Vault"
+  # default    = "YOUR_DEFAULT_VALUE" # 필요한 경우 기본값 설정 
+}
+#################################################
+
+# 옵션 값
+
+variable "prefix" {
+  default     = "terraform_jinsu"
+  description = "prefix"
 }
 
 variable "aws_region" {
@@ -40,13 +61,6 @@ variable "vault_storage_mode" {
   type        = string
   default     = "raft"
   description = "Vault Storage Mode 지정 (raft or consul)"
-}
-
-variable "VAULT_LICENSE" {
-  type        = string
-  sensitive   = true
-  description = "License for the Vault"
-  # default    = "YOUR_DEFAULT_VALUE" # 필요한 경우 기본값 설정 
 }
 
 variable "pem_key_name" {
