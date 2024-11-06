@@ -30,7 +30,7 @@ resource "aws_instance" "vault_raft_amz2" {
 
   # user_data = data.template_file.user_data.rendered
   user_data = templatefile(
-    "user_data_vault_raft.tpl",
+    "${path.module}/user_data_vault_raft.tpl",
     {
       TAG           = var.vault_tag_name
       vault_license = var.VAULT_LICENSE
