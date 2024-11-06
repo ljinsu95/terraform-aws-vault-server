@@ -1,4 +1,4 @@
-output "vault_public_ip" {
+output "vault_public_ips" {
   value = aws_instance.vault_raft_amz2.*.public_ip
 }
 

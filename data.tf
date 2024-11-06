@@ -49,11 +49,6 @@ data "aws_ami" "amazon_linux_2" {
     values = ["x86_64"]
   }
 
-  # filter {
-  #   name   = "platform"
-  #   values = ["amazon"]
-  # }
-
   filter {
     name   = "name"
     values = ["amzn2-ami-kernel-*"]
