@@ -4,14 +4,14 @@ resource "aws_instance" "vault_raft_amz2" {
   count = var.ec2_vault_servers
 
   ami                    = data.aws_ami.amazon_linux_2.id
-  instance_type          = var.instance_type
+  instance_type          = var.ec2_instance_type
   subnet_id              = local.aws_subnets_ids[(tonumber(count.index) + 1) % length(local.aws_subnets_ids)]
   # subnet_id              = data.aws_subnets.main.ids[(tonumber(count.index) + 1) % length(data.aws_subnets.main.ids)]
   vpc_security_group_ids = toset([aws_security_group.vault_server.id])
-  key_name               = var.pem_key_name
+  key_name               = var.ec2_pem_key_name
   tags = {
     Name    = "${var.prefix}-Vault-${count.index}"
-    service = "${var.tag_name}"
+    service = "${var.vault_tag_name}"
   }
 
   root_block_device {
@@ -32,7 +32,7 @@ resource "aws_instance" "vault_raft_amz2" {
   user_data = templatefile(
     "user_data_vault_raft.tpl",
     {
-      TAG           = var.tag_name
+      TAG           = var.vault_tag_name
       vault_license = var.VAULT_LICENSE
     }
   )
